@@ -37,7 +37,7 @@ const LoginPage = () => {
     }
     catch(err){
       toast.error('An error occoured during registeration');
-      console.error('Error:', err);
+      console.log('Error:', err);
     }
   }
 
