@@ -53,10 +53,12 @@ const page = () => {
             [e.target.name]: e.target.value });
     }
 
-    const addExerciseToWorkout = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const addExerciseToWorkout = (e: React.MouseEvent<HTMLButtonElement,
+         MouseEvent>) => {
         console.log(exercise)
 
-        if (exercise.name == '' || exercise.description == '' || exercise.sets == 0
+        if (exercise.name == '' || exercise.description == ''
+            || exercise.sets == 0
             || exercise.reps == 0 || exercise.imageFile == null){
                 toast.error('Please fill all the fields',{
                     position: 'top-center',
@@ -67,15 +69,6 @@ const page = () => {
             ...workout,
             exercises: [...workout.exercises, exercise],
         })
-        /*setExercise({
-            name: '',
-            description: '',
-            sets: 0,
-            reps: 0,
-            imageURL: '',
-            imageFile: null,
-        });*/
-
     }
 
     const deleteExerciseFromWorkout = (index: number) => {
@@ -125,11 +118,13 @@ const page = () => {
         }
     }
 
-    const saveWorkout = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const saveWorkout = async (e: React.MouseEvent<HTMLButtonElement,
+         MouseEvent>) => {
         await checkLogin();
         console.log(workout)
 
-        if (workout.name == '' || workout.description == '' || workout.durationInMinutes == 0 ||
+        if (workout.name == '' || workout.description == ''
+             || workout.durationInMinutes == 0 ||
             workout.imageFile == null || workout.exercises.length == 0){
                 toast.error('Please fill all the fields',{
                     position: 'top-center',
@@ -144,7 +139,6 @@ const page = () => {
                 updatedWorkout.imageURL = imageURL;
             }
         }
-
         for (let i = 0; i < workout.exercises.length; i++) {
             let temping = workout.exercises[i].imageFile
             if (temping){
@@ -155,7 +149,8 @@ const page = () => {
 
         console.log(workout)
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/workoutplans/workouts`,{
+        const response = await
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/workoutplans/workouts`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
